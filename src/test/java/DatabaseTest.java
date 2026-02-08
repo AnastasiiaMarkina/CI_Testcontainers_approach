@@ -1,8 +1,4 @@
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,15 +6,8 @@ import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Testcontainers
-class DatabaseTest {
+class DatabaseTest extends AbstractDatabaseTest{
 
-    @Container
-    static PostgreSQLContainer<?> postgres =
-            new PostgreSQLContainer<>("postgres:15")
-                    .withDatabaseName("testdb")
-                    .withUsername("test")
-                    .withPassword("test");
 
     @Test
     void testDatabaseConnection() throws Exception {
